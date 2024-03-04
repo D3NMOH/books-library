@@ -27,15 +27,6 @@ export default function Home() {
       ) : (
         <Text>:-)</Text>
       )}
-      {/* <TextInput
-        style={globalStyles.inputFields}
-        placeholder="Password"
-        onChangeText={(text) => {
-          setPassword(text);
-        }}
-        value={password}
-        secureTextEntry
-      /> */}
       {logged === 0 ? (
         <Button
           style={[globalStyles.buttons]}
