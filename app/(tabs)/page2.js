@@ -10,7 +10,7 @@ export default function Page2() {
         <View>
           {books.map((item) => {
             return (
-              <View style={globalStyles.bookbox}>
+              <View key={item.numberOfCopies} style={globalStyles.bookbox}>
                 <View style={globalStyles.bookboxLeft}>
                   <Text style={globalStyles.text}>{item.title}</Text>
                   <Text style={globalStyles.smalltext}>{item.author}</Text>
