@@ -1,12 +1,14 @@
 import { Tabs } from "expo-router";
-import { MaterialIcons } from "@expo/vector-icons";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 import { COLORS } from "../../styles/constants";
 
 export default function MainTabs() {
   return (
     <Tabs
       screenOptions={{
+        tabBarLabelStyle: {
+          fontSize: 23,
+        },
         headerStyle: {
           backgroundColor: COLORS.dark,
         },
@@ -20,24 +22,16 @@ export default function MainTabs() {
       <Tabs.Screen
         name="index"
         options={{
-          title: "Home",
-          tabBarIcon: ({ color }) => {
-            return <MaterialIcons name="animation" size={24} color={color} />;
+          tabBarIcon: () => {
+            return <AntDesign name="banckward" size={24} color="black" />;
           },
         }}
       />
       <Tabs.Screen
         name="page2"
         options={{
-          title: "Books",
-          tabBarIcon: ({ color }) => {
-            return (
-              <MaterialCommunityIcons
-                name="animation-outline"
-                size={24}
-                color={color}
-              />
-            );
+          tabBarIcon: () => {
+            return <AntDesign name="creditcard" size={24} color="black" />;
           },
         }}
       />
