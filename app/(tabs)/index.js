@@ -1,63 +1,44 @@
+import { View, Text, Button, TextInput, Pressable } from "react-native";
 import { globalStyles } from "../../styles/global";
 import { useState } from "react";
-import { Text, View, TextInput, Button } from "react-native";
 
-export default function Home() {
+export default function Login() {
   // Set a state variable for each input
   const [name, setName] = useState("");
-  // const [password, setPassword] = useState("");
-  const [logged, setLogged] = useState(0);
+
   return (
     <View style={globalStyles.container}>
-      {name === "" ? (
+      <View style={globalStyles.loginbox}>
         <Text style={globalStyles.heading}>Login</Text>
-      ) : (
-        <Text style={globalStyles.heading}>Welcome, {name}</Text>
-      )}
 
-      {logged === 0 ? (
         <TextInput
-          style={globalStyles.inputFields}
+          style={globalStyles.inputbox}
           placeholder="User name"
+          // update the state variable on every keystroke
+          // You must use onChangeText instead of onChange
           onChangeText={(text) => {
             setName(text);
           }}
+          // set the value of the TextInput to the value of the state variable to "bind" it to the state
           value={name}
         />
-      ) : (
-        <Text>:-)</Text>
-      )}
-      {/* <TextInput
-        style={globalStyles.inputFields}
-        placeholder="Password"
-        onChangeText={(text) => {
-          setPassword(text);
-        }}
-        value={password}
-        secureTextEntry
-      /> */}
-      {logged === 0 ? (
-        <Button
-          style={[globalStyles.buttons]}
+
+        {/* <Button
+          style={{ backgroundColor: "yellow" }}
           onPress={() => {
             console.log(`Username: ${name}`);
-            setLogged(1);
           }}
           title="Submit"
-          color={"#FF4365"}
-        />
-      ) : (
-        <Button
-          style={[globalStyles.buttons]}
+        /> */}
+        <Pressable
+          style={globalStyles.loginbutton}
           onPress={() => {
-            console.log(`Logout`);
-            setLogged(0);
-            setName("");
+            console.log(`Username: ${name}`);
           }}
-          title="Logout"
-          color={"#FF4365"}
-        />
-      )}
+        >
+          <Text style={{ fontSize: 25 }}>Submit</Text>
+        </Pressable>
+      </View>
     </View>
   );
 }
