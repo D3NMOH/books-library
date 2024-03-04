@@ -1,5 +1,5 @@
 import { Tabs } from "expo-router";
-import { AntDesign } from "@expo/vector-icons";
+import { FontAwesome6 } from "@expo/vector-icons";
 import { COLORS } from "../../styles/constants";
 
 export default function MainTabs() {
@@ -7,7 +7,7 @@ export default function MainTabs() {
     <Tabs
       screenOptions={{
         tabBarLabelStyle: {
-          fontSize: 23,
+          fontSize: 10,
         },
         headerStyle: {
           backgroundColor: COLORS.dark,
@@ -22,16 +22,20 @@ export default function MainTabs() {
       <Tabs.Screen
         name="index"
         options={{
-          tabBarIcon: () => {
-            return <AntDesign name="banckward" size={24} color="black" />;
+          title: "User",
+          tabBarLabel: "User",
+          tabBarIcon: ({ color }) => {
+            return <FontAwesome6 name="user-large" size={24} color={color} />;
           },
         }}
       />
       <Tabs.Screen
-        name="page2"
+        name="books"
         options={{
-          tabBarIcon: () => {
-            return <AntDesign name="creditcard" size={24} color="black" />;
+          title: "Books",
+          tabBarLabel: "Book list",
+          tabBarIcon: ({ color }) => {
+            return <FontAwesome6 name="book-open" size={24} color={color} />;
           },
         }}
       />

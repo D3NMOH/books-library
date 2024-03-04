@@ -11,9 +11,11 @@ export default function Login() {
     <View style={globalStyles.container}>
       <View style={globalStyles.loginbox}>
         {logged === 0 ? (
-          <Text style={globalStyles.heading}>Login</Text>
+          <Text style={[globalStyles.heading, { color: "#fff" }]}>Login</Text>
         ) : (
-          <Text style={globalStyles.heading}>Hi, {name}</Text>
+          <Text style={[globalStyles.heading, { color: "#fff" }]}>
+            Hi, {name}
+          </Text>
         )}
 
         {logged === 0 ? (

@@ -4,7 +4,7 @@ import { COLORS } from "./constants";
 export const globalStyles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.light,
+    backgroundColor: COLORS.dark,
     padding: 12,
   },
   text: {
@@ -27,7 +27,7 @@ export const globalStyles = StyleSheet.create({
     marginTop: 50,
     width: 300,
     height: 230,
-    backgroundColor: "#B5DDA4",
+    backgroundColor: COLORS.primary,
     borderRadius: 15,
     gap: 10,
   },
@@ -40,10 +40,12 @@ export const globalStyles = StyleSheet.create({
     borderRadius: 7,
   },
   loginbutton: {
-    backgroundColor: "#4DAA57",
+    margin: 10,
+    backgroundColor: "#fff",
     padding: 10,
     textAlign: "center",
     borderRadius: 7,
+    alignContent: "center",
   },
   bookbox: {
     backgroundColor: "pink",
@@ -60,5 +62,9 @@ export const globalStyles = StyleSheet.create({
     position: "absolute",
     right: 20,
     top: 25,
+  },
+  title: {
+    fontSize: 20,
+    color: COLORS.primary,
   },
 });
