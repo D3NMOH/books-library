@@ -17,4 +17,18 @@ export const globalStyles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "700",
   },
+  inputFields: {
+    backgroundColor: COLORS.primary,
+    color: "#fff",
+    padding: 10,
+    borderRadius: 7,
+    margin: 20,
+  },
+  buttons: {
+    backgroundColor: COLORS.primary,
+    color: "#fff",
+    borderRadius: 7,
+    padding: 10,
+    tintColor: "#fff",
+  },
 });

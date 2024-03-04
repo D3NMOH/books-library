@@ -29,7 +29,7 @@ export default function MainTabs() {
       <Tabs.Screen
         name="page2"
         options={{
-          title: "Page 2",
+          title: "Books",
           tabBarIcon: ({ color }) => {
             return (
               <MaterialCommunityIcons
