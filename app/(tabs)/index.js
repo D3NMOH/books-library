@@ -10,7 +10,11 @@ export default function Login() {
   return (
     <View style={globalStyles.container}>
       <View style={globalStyles.loginbox}>
-        <Text style={globalStyles.heading}>Login</Text>
+        {logged === 0 ? (
+          <Text style={globalStyles.heading}>Login</Text>
+        ) : (
+          <Text style={globalStyles.heading}>Hi, {name}</Text>
+        )}
 
         {logged === 0 ? (
           <TextInput
@@ -26,29 +30,25 @@ export default function Login() {
         )}
         {logged === 0 ? (
           <Pressable
-            style={[globalStyles.buttons]}
+            style={globalStyles.loginbutton}
             onPress={() => {
               console.log(`Username: ${name}`);
+              setLogged(1);
             }}
-            title="Submit"
-          />
+          >
+            <Text style={{ fontSize: 25 }}>Submit</Text>
+          </Pressable>
         ) : (
           <Pressable
-            style={[globalStyles.buttons]}
+            style={globalStyles.loginbutton}
             onPress={() => {
-              console.log(`Username: ${name}`);
+              console.log(`Logged out`);
+              setLogged(0);
             }}
-            title="Logout"
-          />
+          >
+            <Text style={{ fontSize: 25 }}>Logout</Text>
+          </Pressable>
         )}
-        <Pressable
-          style={globalStyles.loginbutton}
-          onPress={() => {
-            console.log(`Username: ${name}`);
-          }}
-        >
-          <Text style={{ fontSize: 25 }}>Submit</Text>
-        </Pressable>
       </View>
     </View>
   );
