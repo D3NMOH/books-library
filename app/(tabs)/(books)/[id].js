@@ -5,7 +5,6 @@ import { globalStyles } from "../../../styles/global";
 import { books } from "../../../data/books";
 import { useNavigation, useLocalSearchParams } from "expo-router";
 import axios from "axios";
-import { Fontisto } from "undefined";
 
 export default function BookDetails({ route }) {
   const { id } = useLocalSearchParams();
