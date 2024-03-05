@@ -1,40 +1,47 @@
-import { View, Text, ScrollView, Pressable, Image } from "react-native";
+// Books.js
+import React, { useContext } from "react";
+import { View, Text, ScrollView, Pressable } from "react-native";
+import { Image } from "expo-image";
 import { globalStyles } from "../../../styles/global";
 import { books } from "../../../data/books";
 import { Link } from "expo-router";
-import { useState } from "react";
+import { UserContext } from "../../../context/UserProvider";
 
-export default function Login() {
-  // Set a state variable for each input
-  const [name, setName] = useState("");
-  const [logged, setLogged] = useState(0);
+export default function Books() {
+  const { name, setName, logged, setLogged } = useContext(UserContext);
 
   return (
     <ScrollView>
       <View style={globalStyles.container}>
-        <Text style={globalStyles.heading}>List of books</Text>
+        <Text style={globalStyles.heading}>The Book List</Text>
+
         <View>
           {books.map((item) => {
             return (
               <Link
                 key={item.id}
-                href={`books/${item.id}`}
+                href={`(books)/${item.id}`}
                 asChild
                 style={globalStyles.bookbox}
               >
                 <Pressable style={globalStyles.bookboxLeft}>
-                  <Image
+                  {/* <Image
                     source={item.thumbnail}
-                    style={{ width: 120 }}
+                    style={[
+                      globalStyles.thumbnail,
+                      { width: 100, height: 100, alignSelf: "flex-start" },
+                    ]}
                     contentFit="contain"
-                  />
+                  /> */}
                   <Text style={globalStyles.text}>{item.title}</Text>
                   <Text style={globalStyles.smalltext}>{item.author}</Text>
                   <Text style={globalStyles.smalltext}>
                     {item.publishingYear}
                   </Text>
                   <View style={globalStyles.bookboxRight}>
-                    <Text style={{ fontSize: 30 }}>{item.numberOfCopies}</Text>
+                    <Text style={globalStyles.numCopies}>
+                      {item.numberOfCopies}
+                    </Text>
                   </View>
                 </Pressable>
               </Link>
