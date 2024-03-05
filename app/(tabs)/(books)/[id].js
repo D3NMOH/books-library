@@ -71,8 +71,8 @@ export default function BookDetails({ route }) {
         <Text style={globalStyles.rentDuration}>
           You can rent the book for {book.rentDuration} days
         </Text>
-        <View style={{ borderRadius: 30 }}>
-          <Text style={globalStyles.booksLeft}>
+        <View style={[globalStyles.booksLeft]}>
+          <Text style={globalStyles.booksLeftText}>
             There are still {book.availableCopies} books left
           </Text>
         </View>

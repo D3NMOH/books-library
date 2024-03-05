@@ -56,6 +56,10 @@ export const globalStyles = StyleSheet.create({
     textAlign: "center",
   },
   bookbox: {
+    borderColor: "#4C1C24",
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderRadius: 10,
     backgroundColor: "black",
     marginBottom: 10,
     padding: 10,
@@ -105,6 +109,12 @@ export const globalStyles = StyleSheet.create({
     padding: 10,
     borderRadius: 7,
     margin: 20,
+  },
+  booksLeftText: {
+    backgroundColor: COLORS.primary,
+    color: "#fff",
+    fontSize: 20,
+    textAlign: "center",
   },
 
   thumbnail: {
