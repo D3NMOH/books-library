@@ -1,47 +1,60 @@
 // Books.js
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { View, Text, ScrollView, Pressable } from "react-native";
 import { Image } from "expo-image";
 import { globalStyles } from "../../../styles/global";
 import { books } from "../../../data/books";
 import { Link } from "expo-router";
 import { UserContext } from "../../../context/UserProvider";
+import axios from "axios";
 
 export default function Books() {
+  const [bookList, setBookList] = useState([]);
+  async function handleLoadData() {
+    try {
+      const response = await axios.get(
+        `https://mini-project-library.onrender.com/`
+      );
+      setBookList(response.data);
+    } catch (error) {
+      console.log(error);
+      alert("Something went wrong! Please try again.");
+    }
+  }
+  handleLoadData();
   const { name, setName, logged, setLogged } = useContext(UserContext);
 
   return (
     <ScrollView>
       <View style={globalStyles.container}>
-        <Text style={globalStyles.heading}>The Book List</Text>
-
         <View>
-          {books.map((item) => {
+          {bookList.map((item) => {
             return (
               <Link
                 key={item.id}
-                href={`(books)/${item.id}`}
+                href={logged === true ? `(books)/${item.id}` : "/Login"}
                 asChild
                 style={globalStyles.bookbox}
               >
-                <Pressable style={globalStyles.bookboxLeft}>
-                  {/* <Image
-                    source={item.thumbnail}
-                    style={[
-                      globalStyles.thumbnail,
-                      { width: 100, height: 100, alignSelf: "flex-start" },
-                    ]}
-                    contentFit="contain"
-                  /> */}
-                  <Text style={globalStyles.text}>{item.title}</Text>
-                  <Text style={globalStyles.smalltext}>{item.author}</Text>
-                  <Text style={globalStyles.smalltext}>
-                    {item.publishingYear}
-                  </Text>
-                  <View style={globalStyles.bookboxRight}>
-                    <Text style={globalStyles.numCopies}>
-                      {item.numberOfCopies}
-                    </Text>
+                <Pressable>
+                  <View style={[globalStyles.itemContainer]}>
+                    <Image
+                      source={item.thumbnail}
+                      style={[globalStyles.thumbSmall, ,]}
+                      contentFit="contain"
+                    />
+                    <View style={{ flex: 1 }}>
+                      <Text style={globalStyles.text}>{item.title}</Text>
+                      <Text style={globalStyles.smalltext}>{item.author}</Text>
+                      <Text style={globalStyles.smalltext}>
+                        {item.publishingYear}
+                      </Text>
+                    </View>
+                    <View style={globalStyles.bookboxRight}>
+                      <Text style={globalStyles.numCopies}>
+                        {item.availableCopies}
+                      </Text>
+                    </View>
                   </View>
                 </Pressable>
               </Link>
