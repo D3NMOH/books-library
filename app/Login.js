@@ -3,13 +3,18 @@ import React, { cloneElement, useContext, useState } from "react";
 import { View, Text, TextInput, Pressable } from "react-native";
 import { globalStyles } from "../styles/global";
 import { UserContext } from "../context/UserProvider";
+import { Link, useNavigation } from "expo-router";
+import { COLORS } from "../styles/constants";
 
 export default function Login() {
+  const navigation = useNavigation();
+
   const { name, logIn, logged, logOut } = useContext(UserContext);
 
   const handleLogin = () => {
     console.log(`Username: ${name}`);
     logIn(userName);
+    navigation.navigate("(books)", {}, { replace: true });
   };
 
   const handleLogout = () => {
@@ -36,9 +41,34 @@ export default function Login() {
             value={userName}
           />
         ) : (
-          <Text style={{ fontSize: 20, color: "#FFF", textAlign: "center" }}>
-            :-)
-          </Text>
+          <Link
+            href="/(books)"
+            style={{
+              alignSelf: "center",
+            }}
+          >
+            <View
+              style={{
+                textAlign: "center",
+                backgroundColor: COLORS.light,
+                padding: 10,
+                borderRadius: 7,
+                alignSelf: "center",
+              }}
+            >
+              <Text
+                style={{
+                  textTransform: "uppercase",
+                  fontSize: 20,
+                  color: "#000",
+                  textAlign: "center",
+                  fontWeight: "700",
+                }}
+              >
+                Go to book list!
+              </Text>
+            </View>
+          </Link>
         )}
         {logged === false ? (
           <Pressable style={globalStyles.loginbutton} onPress={handleLogin}>

@@ -9,9 +9,10 @@ export const globalStyles = StyleSheet.create({
     padding: 12,
   },
   text: {
-    fontSize: 25,
-    fontWeight: "900",
+    fontSize: 20,
+    fontWeight: "600",
     color: COLORS.light,
+    width: "50%",
   },
   smalltext: {
     fontSize: 19,
@@ -21,6 +22,7 @@ export const globalStyles = StyleSheet.create({
     fontSize: 32,
     color: COLORS.primary,
     textAlign: "center",
+    fontWeight: "700",
   },
   loginbox: {
     alignSelf: "center",
@@ -80,15 +82,64 @@ export const globalStyles = StyleSheet.create({
     color: "#fff",
     textAlign: "center",
   },
-  title: {
+  title: { margin: 10, fontSize: 30, color: COLORS.primary, fontWeight: "900" },
+  author: {
+    margin: 10,
     fontSize: 30,
-    color: COLORS.primary,
+    color: "#fff",
+    fontWeight: "300",
   },
+  year: { margin: 10, fontSize: 25, color: "#Fff", fontWeight: "200" },
+  rentDuration: {
+    margin: 10,
+    fontSize: 20,
+    color: COLORS.primary,
+    fontWeight: "200",
+    fontStyle: "italic",
+  },
+  booksLeft: {
+    backgroundColor: COLORS.primary,
+    color: "#fff",
+    fontSize: 20,
+    textAlign: "center",
+    padding: 10,
+    borderRadius: 7,
+    margin: 20,
+  },
+
   thumbnail: {
     width: 300,
     height: 400,
     borderRadius: 10,
     alignSelf: "center",
     margin: 20,
+    shadowColor: "#fff",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 6.27,
+    elevation: 10,
+  },
+  thumbSmall: {
+    width: 80,
+    height: 130,
+    borderRadius: 10,
+    margin: 20,
+    shadowColor: "#fff",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 6.27,
+    elevation: 10,
+    overflow: "visible",
+  },
+  itemContainer: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
   },
 });
