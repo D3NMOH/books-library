@@ -10,18 +10,20 @@ import axios from "axios";
 
 export default function Books() {
   const [bookList, setBookList] = useState([]);
-  async function handleLoadData() {
-    try {
-      const response = await axios.get(
-        `https://mini-project-library.onrender.com/`
-      );
-      setBookList(response.data);
-    } catch (error) {
-      console.log(error);
-      alert("Something went wrong! Please try again.");
+  useEffect(() => {
+    async function handleLoadData() {
+      try {
+        const response = await axios.get(
+          `https://mini-project-library.onrender.com/books`
+        );
+        setBookList(response.data.data);
+      } catch (error) {
+        console.log(error);
+        alert("Something went wrong! Please try again.");
+      }
     }
-  }
-  handleLoadData();
+    handleLoadData();
+  }, []);
   const { name, setName, logged, setLogged } = useContext(UserContext);
 
   return (
@@ -31,18 +33,20 @@ export default function Books() {
           {bookList.map((item) => {
             return (
               <Link
-                key={item.id}
-                href={logged === true ? `(books)/${item.id}` : "/Login"}
+                key={item._id}
+                href={logged === true ? `(books)/${item._id}` : "/Login"}
                 asChild
                 style={globalStyles.bookbox}
               >
                 <Pressable>
                   <View style={[globalStyles.itemContainer]}>
-                    <Image
-                      source={item.thumbnail}
-                      style={[globalStyles.thumbSmall, ,]}
-                      contentFit="contain"
-                    />
+                    <View style={globalStyles.thumbSmallContainer}>
+                      <Image
+                        source={item.thumbnail}
+                        style={[globalStyles.thumbSmall]}
+                        contentFit="contain"
+                      />
+                    </View>
                     <View style={{ flex: 1 }}>
                       <Text style={globalStyles.text}>{item.title}</Text>
                       <Text style={globalStyles.smalltext}>{item.author}</Text>

@@ -135,8 +135,8 @@ export const globalStyles = StyleSheet.create({
   thumbSmall: {
     width: 80,
     height: 130,
-    borderRadius: 10,
     margin: 20,
+    borderRadius: 10,
     shadowColor: "#fff",
     shadowOffset: {
       width: 0,
@@ -146,6 +146,9 @@ export const globalStyles = StyleSheet.create({
     shadowRadius: 6.27,
     elevation: 10,
     overflow: "visible",
+  },
+  thumbSmallContainer: {
+    borderRadius: 10,
   },
   itemContainer: {
     flex: 1,

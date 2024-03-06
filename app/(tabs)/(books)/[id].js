@@ -10,18 +10,15 @@ export default function BookDetails({ route }) {
   const { id } = useLocalSearchParams();
   const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(true);
-  const source = axios.CancelToken.source();
 
   useEffect(() => {
     const fetchBook = async () => {
       try {
         const response = await axios.get(
-          `https://mini-project-library.onrender.com/`,
-          { cancelToken: source.token }
+          `https://mini-project-library.onrender.com/books/${id}`
         );
         const bookData = response.data;
-        const foundBook = bookData.find((book) => book.id === id);
-        setBook(foundBook);
+        setBook(bookData);
         setLoading(false);
       } catch (error) {
         if (axios.isCancel(error)) {
@@ -34,12 +31,7 @@ export default function BookDetails({ route }) {
     };
 
     fetchBook();
-
-    // Очистка ресурсов
-    return () => {
-      source.cancel("Request canceled by cleanup");
-    };
-  }, [id, source]);
+  }, [id]);
 
   if (loading) {
     return (
